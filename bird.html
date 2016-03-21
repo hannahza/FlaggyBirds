@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	html{
+		width: 100%;
+		height: 100px;
+		display:flex;
+		justify-content:center;
+		/*align-item:center;*/
+	}
+	#bg{
+		width: 364px;
+		height: 640px;
+		background: url(imgs_pack.png)no-repeat ;
+	}
+	#bottom{
+		overflow: hidden;
+		position:absolute;
+		left:501px;
+		bottom: 0;
+		width: 362px;
+		height: 142px; 
+	}
+	#inner{
+		width: 420px;
+		height: 142px; 
+		background: url(imgs_pack.png)no-repeat -434px 0;
+		animation:play 0.3s linear 0s infinite;
+
+	}
+	@keyframes play{
+			0%{transform:translateX(0px)}
+			100%{transform:translateX(-30px)}
+	}
+	#score{
+		position:absolute;
+		left:670px;
+		top:120px;
+		width: 30px;
+		height: 30px;
+		font-size: 36px;
+		color:#fff;
+		font-weight: bold;
+	}
+	#ready{
+		position:absolute;
+		top:220px;
+		left:510px;
+		width: 63px;
+		height: 230px;
+		background: url(imgs_pack.png)no-repeat -205px -650px;
+		transform-origin:63px 0;
+		transform:rotate(-90deg);
+	}
+	#bird{
+		position:absolute;
+		left:50%;
+		margin-left: -30px;
+		top:50%;
+		margin-top: -25px;
+		width: 60px;
+		height: 50px;
+		background: url(imgs_pack.png)no-repeat -322px -892px; 
+	}
+	#flaggy{
+		position: absolute;
+		top:255px;
+		left:460px;
+		width: 32px;
+		height: 42px;
+		transform-origin:96px 0;
+		transform:rotate(-90deg);
+	}
+	.bird0{
+		background: url(imgs_pack.png)no-repeat -103px -979px;
+	}
+	.bird1{
+		background: url(imgs_pack.png)no-repeat -135px -979px;
+	}
+	.bird2{
+		background: url(imgs_pack.png)no-repeat -167px -979px;
+	}
+	#tap{
+		position:absolute;
+		top:345px;
+		left:620px;
+		width: 144px;
+		height: 126px;
+		background: url(imgs_pack.png)no-repeat -290px -940px; 
+	}
+
+</style>
+</head>
+<body>
+	<div id="bg">
+		<span id="score">0</span>
+		<div id="ready"></div>
+		<div id="bird"></div>
+		<div id="flaggy"></div>
+		<div id="tap"></div>
+		<div id="bottom">
+			<div id="inner"></div>
+		</div>
+	</div>
+	
+<script>
+		var oFlaggy=document.getElementById("flaggy");
+		var i=0;
+		var startTime=Date.now();
+		setInterval(function(){
+			var curTime=Date.now();
+			var p=(curTime-startTime)/800;
+			var ty=255+6*Math.sin(2*Math.PI*p);
+			oFlaggy.className='bird'+((i++)%3);
+			oFlaggy.style.top=ty+'px';
+		},150);
+		
+
+		// var oInner=document.getElementById('inner');
+		// var startTime=Date.now();
+		// setInterval(function(){
+		// 	var curTime=Date.now();
+		// 	var p=(curTime-startTime)/500; 
+		// 	var tx=-30*p%30;
+		// 	oInner.style.transform='translateX('+tx+'px)';
+		// },16)js方法让bottom移动
+		
+
+
+  
+
+</script>
+</body>
+</html>
